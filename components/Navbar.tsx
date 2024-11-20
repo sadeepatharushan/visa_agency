@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { Button } from './ui/button';
 import Link from 'next/link';
 
-const Navbar = (className) => {
+const Navbar = () => {
   const isAdmin = true;
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -26,7 +26,7 @@ const Navbar = (className) => {
 
   return (
     <header
-      className={`${className} fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
+      className={` fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
         isScrolled ? 'bg-black/70 backdrop-blur' : 'bg-transparent'
       }`}
     >
