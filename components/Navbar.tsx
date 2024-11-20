@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Button } from './ui/button';
 import Link from 'next/link';
+import { Separator } from './ui/separator';
 
 const Navbar = () => {
   const isAdmin = true;
@@ -61,7 +62,7 @@ const Navbar = () => {
                 Dashboard
               </Button>
             </Link> }
-            
+            <Separator orientation="vertical" className='h-8 bg-gray-800' />
             <Link href="/dashboard">
               <Button variant="secondary" className="bg-gray-800 hover:bg-gray-900 text-white">
                 Contact
