@@ -6,7 +6,36 @@ import { Check, ChevronDown, ChevronUp } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-const Select = SelectPrimitive.Root
+const Select = React.forwardRef<
+  React.ElementRef<typeof SelectPrimitive.Root>,
+  React.ComponentPropsWithoutRef<typeof SelectPrimitive.Root> & {
+    error?: string
+    onValidate?: () => void
+  }
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+>(({ children, error, onValidate, ...props }, ref) => {
+  return (
+    <div>
+      <SelectPrimitive.Root 
+        {...props}
+        onValueChange={(value) => {
+          // Dispatch a change event to trigger Conform validation
+          const input = document.createElement('input')
+          input.name = props.name || ''
+          input.value = value
+          input.dispatchEvent(new Event('input', { bubbles: true }))
+          
+          // Call onValidate if provided
+          onValidate?.()
+        }}
+      >
+        {children}
+      </SelectPrimitive.Root>
+      {error && <p className="text-red-600">{error}</p>}
+    </div>
+  )
+})
+Select.displayName = SelectPrimitive.Root.displayName
 
 const SelectGroup = SelectPrimitive.Group
 
