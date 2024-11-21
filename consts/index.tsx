@@ -1,3 +1,5 @@
+import { Calendar, Home, Inbox, User, Settings, } from "lucide-react"
+
 export const aboutUsPara = 'Welcome to [Agency Name], a trusted visa consultancy agency in Sri Lanka dedicated to helping students achieve their academic dreams in Russia. With a commitment to excellence and personalized service, we specialize in guiding students through every step of the process, from selecting the perfect university to securing a student visa. Our experienced team works closely with top Russian universities to provide access to diverse educational opportunities in fields like medicine, engineering, IT, and more. We pride ourselves on transparency, reliability, and a deep understanding of the unique challenges faced by Sri Lankan students. At [Agency Name], we don’t just help you get to Russia; we ensure you are fully prepared for your academic journey, offering support in documentation, language preparation, and cultural orientation. Join us to turn your study-abroad aspirations into reality.'
 
 
@@ -67,4 +69,39 @@ export const services = [
       location: "SRI LANKA",
       image: "/testimonial3.jpg"
     }
+  ]
+
+
+  export const dashboardMenuItems = [
+    {
+      title: "Home",
+      url: "/dashboard",
+      icon: Home,
+    },
+    {
+      title: "Consultations",
+      icon: Inbox,
+      subItems: [
+          { title: "Add Consultation", url: "/dashboard/consultations/add" },
+          { title: "All Consultations", url: "/dashboard/consultations" },
+        ],
+    },
+    {
+      title: "Blogs",
+      icon: Calendar,
+      subItems: [
+        { title: "Add Blog", url: "/dashboard/blogs/add" },
+        { title: "All Blogs", url: "/dashboard/blogs" },
+      ],
+    },
+    {
+      title: "Users",
+      url: "/dashboard/users",
+      icon: User,
+    },
+    {
+      title: "Settings",
+      url: "#",
+      icon: Settings,
+    },
   ]
