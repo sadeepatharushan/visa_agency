@@ -1,12 +1,18 @@
 'use client'
 
+import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/components";
+import { LogIn } from 'lucide-react';
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { Button } from './ui/button';
-import Link from 'next/link';
 import { Separator } from './ui/separator';
+import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 
 const Navbar = () => {
-  const isAdmin = true;
+  const { getPermissions } = useKindeBrowserClient()
+  const { permissions } = getPermissions()
+
+  const isAdmin = permissions?.includes("view:dashboard")
   const [isScrolled, setIsScrolled] = useState(false);
 
   // Function to check scroll position and update the header background
@@ -57,17 +63,23 @@ const Navbar = () => {
 
           {/* Sign Up Button and Avatar */}
           <div className="flex items-center gap-4 flex-1 justify-end">
-            {isAdmin && <Link href="/dashboard">
+            {isAdmin ? (<Link href="/dashboard">
               <Button variant="secondary" className="bg-gray-800 hover:bg-gray-900 text-white">
                 Dashboard
               </Button>
-            </Link> }
-            <Separator orientation="vertical" className='h-8 bg-gray-800' />
+            </Link>) : (
             <Link href="/dashboard">
               <Button variant="secondary" className="bg-gray-800 hover:bg-gray-900 text-white">
                 Contact
               </Button>
-            </Link>
+            </Link>)}
+            
+            <Separator orientation="vertical" className='h-8 bg-gray-800' />
+            <LoginLink>
+              <Button variant="secondary" className="bg-gray-800 hover:bg-gray-900 text-white">
+              <LogIn />
+              </Button>
+              </LoginLink>
           </div>
 
           {/* Mobile Menu Button */}
