@@ -1,8 +1,5 @@
-import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
-import { AppSidebar } from "@/components/app-sidebar"
-import { cookies } from "next/headers";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
-import { redirect } from "next/navigation";
+import { AppSidebar } from "@/components/app-sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 export default async function DashboardLayout({
     children,
   }: Readonly<{
@@ -10,12 +7,6 @@ export default async function DashboardLayout({
   }>) {
     // const cookieStore = await cookies()
     // const defaultOpen = cookieStore.get("sidebar:state")?.value === "true"
-    const { getUser } = getKindeServerSession()
-    const user = await getUser()
-
-    if (!user && user?.email !== 'visurasurajitha@gmail.com') {
-        return redirect('/') // need to edit this
-    }
     return (
 
           <SidebarProvider >

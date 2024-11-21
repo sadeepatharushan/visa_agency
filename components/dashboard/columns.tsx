@@ -11,7 +11,7 @@ import { Checkbox } from "../ui/checkbox"
 export type Payment = {
   id: string
   name: string
-  status: "pending" | "processing" | "success" | "failed"
+  status: string
   email: string
 }
 

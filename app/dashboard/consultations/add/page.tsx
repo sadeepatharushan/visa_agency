@@ -1,7 +1,7 @@
 
 const page = () => {
   return (
-    <div>add consultation</div>
+    <div>page</div>
   )
 }
 

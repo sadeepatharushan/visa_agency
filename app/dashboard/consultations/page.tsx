@@ -14,12 +14,11 @@ const data= [
     status: "processing",
     email: "example@gmail.com",
   },
-  // ...
 ]
 
 const consultations = () => {
   return (
-    <div className=" container mx-auto p-10">
+    <div className="container mx-auto p-10">
       <div className="bg-slate-50 px-4 rounded-md">
       <DataTable columns={columns} data={data} />
       </div>

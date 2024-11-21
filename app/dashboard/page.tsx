@@ -1,7 +1,7 @@
 
 const page = () => {
   return (
-    <div className="text-3xl ">Welcome</div>
+    <div className="text-3xl">Welcome</div>
   )
 }
 

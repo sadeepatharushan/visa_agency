@@ -69,7 +69,7 @@ export async function AppSidebar() {
               <DropdownMenuTrigger asChild>
                 <SidebarMenuButton className="py-5">
                 <Avatar>
-                    <AvatarImage src={user.picture || "https://github.com/shadcn.png"} />
+                    <AvatarImage src={user?.picture || "https://github.com/shadcn.png"} />
                     <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
                 Username
