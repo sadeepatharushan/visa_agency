@@ -46,3 +46,25 @@ export const services = [
       answer: "Upon arrival, attend orientation sessions, set up your living space, and begin exploring your new environment. We offer support services to help you adjust and make the most of your study abroad experience."
     }
   ]
+
+
+  export const testimonials = [
+    {
+      text: "Thanks to [Agency Name], my dream of studying medicine in Russia came true! The team was incredibly supportive, guiding me through every step of the application and visa process. They made everything so easy and stress-free. I highly recommend their services to any student looking to study abroad.",
+      name: "BINADI CHITHMA",
+      location: "SRI LANKA",
+      image: "/testimonial1.jpg"
+    },
+    {
+      text: "I was overwhelmed by the thought of studying in a foreign country, but [Agency Name] made it all possible. From choosing the right university to preparing my visa documents, they were with me every step of the way. Now, I’m pursuing my engineering degree in Russia, and it’s all thanks to them!",
+      name: "VIMUKTHI PERERA",
+      location: "SRI LANKA",
+      image: "/testimonial2.jpeg"
+    },
+    {
+      text: "What sets [Agency Name] apart is their personalized approach. They genuinely cared about my goals and helped me secure admission to a top IT program in Russia. The team even prepared me for life in a new country, which made my transition so smooth. I couldn’t have done it without them!",
+      name: "RAVEESHA DISSANAYAKE",
+      location: "SRI LANKA",
+      image: "/testimonial3.jpg"
+    }
+  ]

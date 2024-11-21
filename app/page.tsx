@@ -3,6 +3,9 @@ import AboutUs from "@/components/About";
 import Services from "@/components/Services";
 import Footer from "@/components/Footer";
 import Faqs from "@/components/Faqs";
+import VisaMap from "@/components/Visa-Map";
+import Testimonials from "@/components/Testimonials";
+import ConsultationForm from "@/components/ConsultationForm";
 
 export default function Home() {
   return (
@@ -11,7 +14,10 @@ export default function Home() {
       <div className="max-w-7xl mx-auto">
         <AboutUs />
         <Services />
-        <Faqs />
+        <VisaMap />
+        <ConsultationForm />
+        <Testimonials /> 
+        <Faqs />  
       </div>
       <Footer />
     </main>
