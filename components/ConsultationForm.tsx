@@ -3,7 +3,7 @@ import { createConsultation } from "@/actions/consultation-actions"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { consultationSchema } from "@/lib/zod-schemas"
+import { insertConsultationSchema } from "@/lib/zod-schemas"
 import { useForm } from "@conform-to/react"
 import { parseWithZod } from "@conform-to/zod"
 import Image from "next/image"
@@ -16,7 +16,7 @@ export default function ConsultationForm() {
   const [form, fields] = useForm({
       lastResult,
       onValidate({ formData }) {
-        return parseWithZod(formData, { schema: consultationSchema })
+        return parseWithZod(formData, { schema: insertConsultationSchema })
       },
       shouldValidate: 'onBlur',
       shouldRevalidate: 'onInput',
