@@ -10,6 +10,7 @@ import Image from "next/image"
 import { useActionState } from "react"
 
 export default function ConsultationForm() {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [lastResult, action] = useActionState(createConsultation, undefined)
 
   const [form, fields] = useForm({
@@ -99,12 +100,6 @@ export default function ConsultationForm() {
                 </SelectContent>
             </Select>
         </div>
-          {/* <div className="flex items-center space-x-2">
-            <Checkbox id="agree" />
-            <label htmlFor="agree" className="text-sm">
-              By clicking you agree to our <a href="#" className="underline">Privacy Policy</a> and <a href="#" className="underline">Terms & Conditions</a> *
-            </label>
-          </div> */}
           <Button className="w-full bg-purple-700 text-white">Get Started for Free</Button>
         </form>
       </div>
