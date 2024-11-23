@@ -5,17 +5,10 @@ import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel,
 import { ArrowUpDown, MoreHorizontal } from "lucide-react"
 import { Button } from "../ui/button"
 import { Checkbox } from "../ui/checkbox"
+import { insertConsultationSchemaType } from "@/lib/zod-schemas"
 
-// This type is used to define the shape of our data.
-// You can use a Zod schema here if you want.
-export type Payment = {
-  id: string
-  name: string
-  status: string
-  email: string
-}
 
-export const columns: ColumnDef<Payment>[] = [
+export const columns: ColumnDef<insertConsultationSchemaType>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -58,6 +51,18 @@ export const columns: ColumnDef<Payment>[] = [
     cell: ({ row }) => <div className="lowercase">{row.getValue("email")}</div>,
   },
   {
+    accessorKey: "phone",
+    header: "Phone Number",
+  },
+  {
+    accessorKey: "studyYear",
+    header: "Study Year",
+  },
+  {
+    accessorKey: "studyIntake",
+    header: "Study Intake",
+  },
+  {
     accessorKey: "status",
     header: "Status",
     cell: ({ row }) => (
@@ -80,8 +85,7 @@ export const columns: ColumnDef<Payment>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
+            <DropdownMenuItem>delete</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )

@@ -4,6 +4,9 @@ import { db } from "@/db"
 import { consultations } from "@/db/schema"
 import { insertConsultationSchema } from "@/lib/zod-schemas"
 import { parseWithZod } from "@conform-to/zod"
+import { Resend } from 'resend';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function createConsultation(prevState: unknown, formData: FormData) {
 
@@ -23,6 +26,15 @@ export async function createConsultation(prevState: unknown, formData: FormData)
             phone: submission.value.phone,
             studyIntake: submission.value.studyIntake,
             studyYear: submission.value.studyYear,
+        });
+
+        // revalidatePath("/")
+
+        resend.emails.send({
+        from: 'onboarding@resend.dev',
+        to: 'visurasurajitha@gmail.com',
+        subject: 'Hello World',
+        html: '<p>new consultation added!</p>'
         });
 
         return submission.reply()

@@ -1,22 +1,26 @@
 import { columns } from "@/components/dashboard/columns"
 import { DataTable } from "@/components/dashboard/data-table"
+import { db } from "@/db"
+import { consultations } from "@/db/schema"
 
-const data= [
-  {
-    id: "728ed52f",
-    name: "visura",
-    status: "pending",
-    email: "m@example.com",
-  },
-  {
-    id: "489e1d42",
-    name: "visura",
-    status: "processing",
-    email: "example@gmail.com",
-  },
-]
+// const data= [
+//   {
+//     id: "728ed52f",
+//     name: "visura",
+//     status: "pending",
+//     email: "m@example.com",
+//   },
+//   {
+//     id: "489e1d42",
+//     name: "visura",
+//     status: "processing",
+//     email: "example@gmail.com",
+//   },
+// ]
 
-const consultations = () => {
+const consultationsPage = async () => {
+  const data = await db.select().from(consultations)
+  
   return (
     <div className="container mx-auto p-10">
       <div className="bg-slate-50 px-4 rounded-md">
@@ -27,4 +31,4 @@ const consultations = () => {
   )
 }
 
-export default consultations
+export default consultationsPage
