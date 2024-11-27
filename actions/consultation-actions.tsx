@@ -4,6 +4,8 @@ import { db } from "@/db"
 import { consultations } from "@/db/schema"
 import { insertConsultationSchema } from "@/lib/zod-schemas"
 import { parseWithZod } from "@conform-to/zod"
+import { eq } from "drizzle-orm"
+import { revalidatePath } from "next/cache"
 import { Resend } from 'resend';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
@@ -25,7 +27,7 @@ export async function createConsultation(prevState: unknown, formData: FormData)
             email: submission.value.email,
             phone: submission.value.phone,
             studyIntake: submission.value.studyIntake,
-            studyYear: submission.value.studyYear,
+            studyYear: submission.value.studyYear
         });
 
         // revalidatePath("/")
@@ -45,5 +47,15 @@ export async function createConsultation(prevState: unknown, formData: FormData)
         //     status: 'error',
         //     message: 'An unexpected error occurred while saving the free consultation. Please try again later.',
         // }
+    }
+}
+
+export default async function deleteConsultation(id: number) {
+
+    try {
+        await db.delete(consultations).where(eq(consultations.id, id));
+        revalidatePath("/dashboard/consultations")
+    } catch (error) {
+      console.error(error);
     }
 }

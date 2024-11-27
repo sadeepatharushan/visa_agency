@@ -1,11 +1,13 @@
 "use client"
 
 import { ColumnDef } from "@tanstack/react-table"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import { ArrowUpDown, MoreHorizontal } from "lucide-react"
-import { Button } from "../ui/button"
-import { Checkbox } from "../ui/checkbox"
 import { insertConsultationSchemaType } from "@/lib/zod-schemas"
+import { Checkbox } from "@/components/ui/checkbox"
+import { Button } from "@/components/ui/button"
+import deleteConsultation from "@/actions/consultation-actions"
+import { toast } from "sonner"
 
 
 export const columns: ColumnDef<insertConsultationSchemaType>[] = [
@@ -14,8 +16,11 @@ export const columns: ColumnDef<insertConsultationSchemaType>[] = [
     header: ({ table }) => (
       <Checkbox
         checked={
-          table.getIsAllPageRowsSelected() ||
-          (table.getIsSomePageRowsSelected() && "indeterminate")
+          table.getIsAllPageRowsSelected()
+            ? true
+            : table.getIsSomePageRowsSelected()
+            ? "indeterminate"
+            : false
         }
         onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
         aria-label="Select all"
@@ -73,7 +78,17 @@ export const columns: ColumnDef<insertConsultationSchemaType>[] = [
     id: "actions",
     header: "Actions",
     enableHiding: false,
-    cell: () => {
+    cell: ({ row }) => {
+      const id = row.original.id;
+      const handleDelete = async () => {
+        try {
+            await deleteConsultation(id as number);
+            toast.success("Consultation deleted successfully");
+        } catch (error) {
+            console.error(error);
+            toast.error("Cannot delete consultation right now");
+        }
+      }
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -85,7 +100,7 @@ export const columns: ColumnDef<insertConsultationSchemaType>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>delete</DropdownMenuItem>
+            <DropdownMenuItem onClick={handleDelete}>delete</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       )

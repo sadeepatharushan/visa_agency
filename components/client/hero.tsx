@@ -1,14 +1,15 @@
 'use client'
-import { useState, useEffect } from 'react';
-import { Button } from './ui/button'; // Assuming Button is already defined
+import { useState, useEffect } from 'react';// Assuming Button is already defined
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { Button } from '../ui/button';
+import Link from 'next/link';
 
 const images = [
   "/hero1.png",
   "/hero2.jpg",
 ];
 
-const HeroSection = () => {
+const Hero = () => {
   const [currentImage, setCurrentImage] = useState(0);
 
   // Automatically change image every 5 seconds
@@ -32,7 +33,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-[100vh] w-full overflow-hidden">
+    <section className="relative sm:h-[100vh] h-[70vh] w-full overflow-hidden">
       {/* eslint-disable-next-line @next/next/no-img-element*/}
       <img
         src={images[currentImage]}
@@ -43,27 +44,29 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative h-full flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8">
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-4">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-zinc-100 mb-4">
           Study In Russia
         </h1>
-        <p className="max-w-2xl mx-auto text-xl sm:text-2xl text-gray-200 mb-8">
+        <p className="max-w-2xl mx-auto text-xl sm:text-2xl text-zinc-200 mb-8">
           Join with us to make your life successful.
         </p>
         <div className="flex flex-col sm:flex-row gap-4">
-          <Button className="">Contact Us</Button>
+          <Button asChild className="text-zinc-200 bg-zinc-900">
+            <Link href="#Consultation">Get Free Consultation</Link>
+          </Button>
         </div>
       </div>
 
       {/* Navigation Arrows */}
       <button
         onClick={handlePrevImage}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-zinc-200 p-3 rounded-full hover:bg-black/70 transition"
       >
         <ArrowLeft /> 
       </button>
       <button
         onClick={handleNextImage}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black/70 transition"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black/50 text-zinc-200 p-3 rounded-full hover:bg-black/70 transition"
       >
         <ArrowRight />
       </button>
@@ -71,4 +74,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default Hero;

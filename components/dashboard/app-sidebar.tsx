@@ -16,16 +16,18 @@ import {
   SidebarMenuSubItem,
 } from "@/components/ui/sidebar"
 import { dashboardMenuItems } from "@/consts"
-import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
-import {LogoutLink} from "@kinde-oss/kinde-auth-nextjs/components";
+import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components"
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server"
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar"
+import Link from "next/link"
 
 export async function AppSidebar() {
   const { getUser } = getKindeServerSession()
   const user = await getUser()
+
   return (
     <Sidebar>
-      <SidebarContent>
+      <SidebarContent className="bg-zinc-50">
         <SidebarGroup>
           <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
@@ -34,6 +36,7 @@ export async function AppSidebar() {
                 <Collapsible key={item.title} defaultOpen={false} className="group/collapsible">
                   <SidebarMenuItem>
                     <CollapsibleTrigger asChild>
+                    <Link href={item.url}>
                       <SidebarMenuButton>
                         <item.icon />
                         <span>{item.title}</span>
@@ -41,6 +44,7 @@ export async function AppSidebar() {
                           <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
                         )}
                       </SidebarMenuButton>
+                      </Link>
                     </CollapsibleTrigger>
                     {item.subItems && (
                       <CollapsibleContent>
@@ -48,7 +52,7 @@ export async function AppSidebar() {
                           {item.subItems.map((subItem) => (
                             <SidebarMenuSubItem key={subItem.title}>
                               <SidebarMenuButton asChild>
-                                <a href={subItem.url}>{subItem.title}</a>
+                                <Link href={subItem.url}>{subItem.title}</Link>
                               </SidebarMenuButton>
                             </SidebarMenuSubItem>
                           ))}
@@ -85,9 +89,9 @@ export async function AppSidebar() {
                 </DropdownMenuItem>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                <LogoutLink>
+                <LogoutLink className="flex flex-row w-full justify-between">
                   Log out
-                  <LogOut/>
+                  <LogOut className="w-5 h-5"/>
                 </LogoutLink>
                 </DropdownMenuItem>
               </DropdownMenuContent>

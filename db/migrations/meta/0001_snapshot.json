@@ -1,6 +1,6 @@
 {
-  "id": "75e77cd7-5499-4171-8da0-40a8b9de8ea3",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "d9b694e0-649c-44c6-b907-4a75f3044493",
+  "prevId": "75e77cd7-5499-4171-8da0-40a8b9de8ea3",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -87,13 +87,13 @@
           "name": "studyYear",
           "type": "varchar(4)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "studyIntake": {
           "name": "studyIntake",
           "type": "varchar",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "created_at": {
           "name": "created_at",

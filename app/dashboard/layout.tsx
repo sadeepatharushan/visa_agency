@@ -1,4 +1,4 @@
-import { AppSidebar } from "@/components/app-sidebar";
+import { AppSidebar } from "@/components/dashboard/app-sidebar";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 export default async function DashboardLayout({
     children,
@@ -11,7 +11,7 @@ export default async function DashboardLayout({
 
           <SidebarProvider >
             <AppSidebar />
-            <main className="w-screen h-screen bg-blue-50 dark:bg-blue-950">
+            <main className="w-screen min-h-screen bg-blue-50 dark:bg-blue-950">
                 <SidebarTrigger />
                 {children}
             </main>

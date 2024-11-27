@@ -1,4 +1,5 @@
-import Navbar from "@/components/Navbar";
+import Footer from "@/components/client/footer";
+import Navbar from "@/components/client/navbar";
 
 export default async function ClientLayout({
   children,
@@ -6,13 +7,10 @@ export default async function ClientLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={``}
-      >
-        <Navbar />
+    <>
+      <Navbar />
         {children}
-      </body>
-    </html>
+      <Footer />
+    </>
   );
 }

@@ -11,7 +11,7 @@ import { faqItems } from "@/consts"
   
     return (
       <section className="w-full py-12 rounded-md mb-20 bg-gray-50">
-        <div className="container px-4 md:px-6">
+        <div className="container px-4 md:px-6 mx-auto">
           <div className="grid gap-6 lg:grid-cols-2 lg:gap-12 items-start">
             <div className="relative aspect-square">
               <Image

@@ -1,7 +1,9 @@
 
 const page = () => {
   return (
-    <div className="text-3xl">Welcome</div>
+    <div className="p-10 text-3xl font-semibold">
+      Welcome To The Dashboard..!
+    </div>
   )
 }
 

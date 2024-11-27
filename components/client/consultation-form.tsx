@@ -22,8 +22,8 @@ export default function ConsultationForm() {
       shouldRevalidate: 'onInput',
   })
   return (
-    <div className=" mx-auto py-16 px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-      <div className="pr-6">
+    <div id="Consultation" className="mx-auto py-16 px-4 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div className="">
         <Image
           src="/form1.jpg"
           alt="Consultation Image"
@@ -71,7 +71,7 @@ export default function ConsultationForm() {
                 key={fields.studyYear.key}
                 name={fields.studyYear.name}
                 defaultValue={fields.studyYear.initialValue}
-                error={fields.studyYear.errors as string | undefined}
+                error={fields.studyYear.errors as unknown as string | undefined}
                 onValidate={() => form.validate()}
             >
                 <SelectTrigger>
@@ -88,7 +88,7 @@ export default function ConsultationForm() {
                 key={fields.studyIntake.key}
                 name={fields.studyIntake.name}
                 defaultValue={fields.studyIntake.initialValue} 
-                error={fields.studyIntake.errors as string | undefined}
+                error={fields.studyIntake.errors as unknown as string | undefined}
                 onValidate={() => form.validate()}
             >
                 <SelectTrigger>
@@ -100,7 +100,7 @@ export default function ConsultationForm() {
                 </SelectContent>
             </Select>
         </div>
-          <Button className="w-full bg-purple-700 text-white">Get Started for Free</Button>
+          <Button className="w-full bg-purple-700 hover:bg-purple-800 text-white">Get Started for Free</Button>
         </form>
       </div>
     </div>
