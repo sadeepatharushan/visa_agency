@@ -29,7 +29,7 @@ const DownloadApplication = () => {
   return (
     <Button
         onClick={handleDownloadApplicationForm}
-        className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-md"
+        className="bg-[#002244] hover:bg-[#0a2351] text-white px-6 py-2 rounded-md"
       >
         <FileText className="mr-2 h-5 w-5" />
         Download Application Form

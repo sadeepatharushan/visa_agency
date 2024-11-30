@@ -100,7 +100,7 @@ export default function ConsultationForm() {
                 </SelectContent>
             </Select>
         </div>
-          <Button className="w-full bg-purple-700 hover:bg-purple-800 text-white">Get Started for Free</Button>
+          <Button className="w-full bg-[#002244] hover:bg-[#0a2351] text-white">Get Started for Free</Button>
         </form>
       </div>
     </div>

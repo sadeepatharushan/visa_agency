@@ -12,7 +12,7 @@ export default function Testimonials() {
         </p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-purple-500 text-white p-6 rounded-lg shadow-md flex flex-col h-full">
+            <div key={index} className="bg-[#002244] hover:bg-[#0a2351] text-white p-6 rounded-lg shadow-md flex flex-col h-full">
               <div className="flex-grow">
                 <div className="flex items-start mb-4">
                   <span className="text-4xl mr-2"><Quote /></span>

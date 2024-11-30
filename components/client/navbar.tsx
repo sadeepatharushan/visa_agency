@@ -65,7 +65,7 @@ const Navbar = () => {
           {/* Sign Up Button and Avatar */}
           <div className="hidden md:flex items-center gap-3 flex-1 justify-end">
             <Link href="/dashboard">
-              <Button variant="secondary" className="bg-zinc-900 hover:bg-zinc-800 text-zinc-200">
+              <Button variant="secondary" className="bg-[#002244] hover:bg-[#0a2351] text-zinc-200">
                 { !isAdmin ? "Contact Us" : isLoading ? <Loader2/> : "Dashboard" }
               </Button>
             </Link>

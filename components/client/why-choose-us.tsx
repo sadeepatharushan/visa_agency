@@ -107,7 +107,7 @@ export default function WhyChooseUs() {
   return (
     <section className="relative">
       <div className="relative mx-auto max-w-7xl px-4 py-16">
-        <div className="grid gap-12 grid-cols-2 md:grid-cols-4 lg:gap-16">
+        <div className="grid gap-12 grid-cols-2 md:grid-cols-4 lg:gap-16 text-[#002244]">
           {stats.map((stat, index) => (
             <Stat 
               key={stat.label} 
