@@ -7,7 +7,7 @@ import { FileText } from 'lucide-react'
 const DownloadApplication = () => {
 
     const handleDownloadApplicationForm = async () => {
-        const fileUrl = '../../consts/application.docx';
+        const fileUrl = '/application.docx';
         
         try {
           const response = await fetch(fileUrl);
