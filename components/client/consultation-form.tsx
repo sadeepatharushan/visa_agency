@@ -44,6 +44,7 @@ export default function ConsultationForm() {
                 key={fields.name.key}
                 name={fields.name.name}
                 defaultValue={fields.name.initialValue} 
+                className="bg-white"
             />
             <p className="text-red-600">{fields.name.errors}</p>
           </div>
@@ -54,6 +55,7 @@ export default function ConsultationForm() {
                 key={fields.email.key}
                 name={fields.email.name}
                 defaultValue={fields.email.initialValue} 
+                className="bg-white"
             />
             <p className="text-red-600">{fields.email.errors}</p>
           </div>
@@ -62,7 +64,8 @@ export default function ConsultationForm() {
                 placeholder="Mobile Number" 
                 key={fields.phone.key}
                 name={fields.phone.name}
-                defaultValue={fields.phone.initialValue} 
+                defaultValue={fields.phone.initialValue}
+                className="bg-white" 
             />
             <p className="text-red-600">{fields.phone.errors}</p>
           </div>
@@ -100,7 +103,7 @@ export default function ConsultationForm() {
                 </SelectContent>
             </Select>
         </div>
-          <Button className="w-full bg-[#002244] hover:bg-[#0a2351] text-white">Get Started for Free</Button>
+          <Button className="w-full bg-[#002244] hover:bg-[#0a2351] text-white">Get Free Consultation</Button>
         </form>
       </div>
     </div>

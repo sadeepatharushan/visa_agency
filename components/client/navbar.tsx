@@ -8,6 +8,7 @@ import { Button } from '../ui/button';
 import { useKindeBrowserClient } from "@kinde-oss/kinde-auth-nextjs";
 import { navlinks } from "@/consts";
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import Image from "next/image";
 
 const Navbar = () => {
   const { getPermissions, isLoading } = useKindeBrowserClient()
@@ -42,7 +43,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 sm:h-20">
           <div className="flex-shrink-0 flex-1">
             <Link href="/" className="text-zinc-950 font-bold text-2xl">
-              Logo
+              <Image src='/agency-logo.jpg' alt='logo image' width={5} height={5} className="w-10 h-10" />
             </Link>
           </div>
 
