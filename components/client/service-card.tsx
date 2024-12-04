@@ -15,7 +15,7 @@ interface ServiceCardProps {
   isInView: boolean
 }
 
-export function ServiceCard({ service, index, isInView }: ServiceCardProps) {
+export function ServiceCard({ service, isInView }: ServiceCardProps) {
   const [hasAnimated, setHasAnimated] = useState(false)
 
   useEffect(() => {
@@ -26,9 +26,9 @@ export function ServiceCard({ service, index, isInView }: ServiceCardProps) {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      initial={{ opacity: 0, y: 30 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+      transition={{ duration: 0.75, delay:0.3 }}
     >
       <Card className="rounded-none w-full max-w-sm hover:shadow-lg transition-shadow">
         <CardHeader className="p-0">

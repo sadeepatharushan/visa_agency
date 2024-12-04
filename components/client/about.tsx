@@ -3,7 +3,7 @@ import { TextGenerateEffect } from "../ui/text-generate"
 
 const AboutUs = () => {
   return (
-    <div className="py-10 px-5 my-10" id="About">
+    <div className="py-10 px-5" id="About">
       <h1 className="font-semibold text-5xl text-center text-blue-950">
         About Us
       </h1>

@@ -15,9 +15,9 @@ export default function Services() {
       <div className="container px-4 md:px-6 mx-auto">
         <motion.h2 
           className="text-4xl font-semibold tracking-tighter text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.5 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.75, delay:0.3 }}
         >
           Core services we offer
         </motion.h2>

@@ -53,7 +53,7 @@ const Navbar = () => {
               {navlinks.map((item) => (
                 <li key={item}>
                   <a
-                    href={`#${item}`}
+                    href={item == 'Blog' ? '/blogs' : `#${item}`}
                     className="text-zinc-950 hover:text-zinc-700 text-lg transition-colors"
                   >
                     {item}
