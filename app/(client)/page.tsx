@@ -8,6 +8,7 @@ import WhyChooseUs from "@/components/client/why-choose-us";
 import Hero from "@/components/client/hero";
 import AboutUs from "@/components/client/about";
 import Testimonials from "@/components/client/testimonials";
+import ContactUs from "@/components/client/contact-us";
 
 export default async function Home() {
 
@@ -22,6 +23,7 @@ export default async function Home() {
         <UniversityList />
         <BlogSection />
         <ConsultationForm />
+        <ContactUs />
         <Testimonials /> 
         <Faqs />  
       </div>
