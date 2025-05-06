@@ -12,7 +12,7 @@ export const aboutUsPara = 'Welcome to [Agency Name], a trusted visa consultancy
 
 export const services = [
     {
-      title: "Service One",
+      title: "Service  ",
       description: "Description of service one and its key benefits to your customers.",
       image: "/service1.png"
     },
