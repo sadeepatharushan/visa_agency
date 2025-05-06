@@ -1,9 +1,10 @@
 import { universityData } from "@/consts";
 import { Plus } from 'lucide-react';
 import Link from "next/link";
-import DownloadApplication from "./download-button";
+
 
 export default function UniversityList() {
+
   const columnCount = 3;
 
   const columnsData = universityData.reduce<typeof universityData[]>((acc, uni, index) => {
@@ -20,7 +21,7 @@ export default function UniversityList() {
       <h1 className="text-4xl font-bold mb-2 text-center">Find a University</h1>
       <div className="h-1 w-24 bg-orange-500 mb-12 mx-auto" />
       <div className="flex flex-col items-center justify-center">
-      <div className="grid md:grid-cols-3 gap-x-20 gap-y-4 mb-12">
+      <div className="grid md:grid-cols-3 gap-x-20 gap-y-4">
         {columnsData.map((column, columnIndex) => (
           <div key={columnIndex} className="space-y-4">
             {column.map((university) => (
@@ -37,7 +38,6 @@ export default function UniversityList() {
         ))}
       </div>
 
-      <DownloadApplication />
       </div>
     </div>
   )

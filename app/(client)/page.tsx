@@ -9,6 +9,7 @@ import Hero from "@/components/client/hero";
 import AboutUs from "@/components/client/about";
 import Testimonials from "@/components/client/testimonials";
 import ContactUs from "@/components/client/contact-us";
+import DocumentHandler from "@/components/client/document-handler";
 
 export default async function Home() {
 
@@ -21,8 +22,9 @@ export default async function Home() {
         <Services />
         <VisaMap />
         <UniversityList />
-        <BlogSection />
+        <DocumentHandler />
         <ConsultationForm />
+        <BlogSection />
         <ContactUs />
         <Testimonials /> 
         <Faqs />  
