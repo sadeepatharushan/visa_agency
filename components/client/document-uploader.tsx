@@ -45,53 +45,53 @@ export default function DocumentUploader() {
     }
   };
 
-  const handleUploadError = (error) => {
-    // Handle any upload errors
-    console.error("Error uploading document:", error);
-    
-    // Professional Error Alert
-    Swal.fire({
-      icon: 'error',
-      title: 'Upload Failed',
-      html: `
-        <p style="color: #4B5563; font-size: 15px; line-height: 1.6; margin-top: 10px;">
-          We encountered an issue while uploading your document. Please try again.
+ const handleUploadError = (error) => {
+  // Handle any upload errors
+  console.error("Error uploading document:", error);
+
+  // Professional Error Alert
+  Swal.fire({
+    icon: 'error',
+    title: 'Upload Failed',
+    html: `
+      <p style="color: #4B5563; font-size: 15px; line-height: 1.6; margin-top: 10px;">
+        We encountered an issue while uploading your document. Please try again.
+      </p>
+      <div style="background-color: #FEF2F2; border-left: 3px solid #EF4444; padding: 12px; margin-top: 15px; border-radius: 4px;">
+        <p style="color: #991B1B; font-size: 13px; margin: 0;">
+          <strong>Error:</strong> ${error.message}
         </p>
-        <div style="background-color: #FEF2F2; border-left: 3px solid #EF4444; padding: 12px; margin-top: 15px; border-radius: 4px;">
-          <p style="color: #991B1B; font-size: 13px; margin: 0;">
-            <strong>Error:</strong> ${error.message}
-          </p>
-        </div>
-        <p style="color: #6B7280; font-size: 14px; margin-top: 15px; line-height: 1.5;">
-          If the problem persists, please contact our support team:
+      </div>
+      <p style="color: #6B7280; font-size: 14px; margin-top: 15px; line-height: 1.5;">
+        If the problem persists, please contact our support team:
+      </p>
+      <div style="margin-top: 10px;">
+        <p style="color: #2563EB; font-size: 14px; margin: 5px 0;">
+          📧 Email: support@example.com
         </p>
-        <div style="margin-top: 10px;">
-          <p style="color: #2563EB; font-size: 14px; margin: 5px 0;">
-            📧 Email: support@example.com
-          </p>
-          <p style="color: #2563EB; font-size: 14px; margin: 5px 0;">
-            📞 Phone: +1 (800) 123-4567
-          </p>
-        </div>
-      `,
-      confirmButtonText: 'Try Again',
-      confirmButtonColor: '#2563EB',
-      showCancelButton: true,
-      cancelButtonText: 'Contact Support',
-      cancelButtonColor: '#6B7280',
-      customClass: {
-        popup: 'rounded-lg',
-        title: 'text-xl font-semibold',
-        confirmButton: 'px-6 py-2.5 rounded-lg font-medium',
-        cancelButton: 'px-6 py-2.5 rounded-lg font-medium'
-      }
-    }).then((result) => {
-      if (result.dismiss === Swal.DismissReason.cancel) {
-        // Open email client
-        window.location.href = 'mailto:support@example.com?subject=Document Upload Issue';
-      }
-    });
-  };
+        <p style="color: #2563EB; font-size: 14px; margin: 5px 0;">
+          📞 Phone: +1 (800) 123-4567
+        </p>
+      </div>
+    `,
+    confirmButtonText: 'Try Again',
+    confirmButtonColor: '#2563EB',
+    showCancelButton: true,
+    cancelButtonText: 'Contact Support',
+    cancelButtonColor: '#6B7280',
+    customClass: {
+      popup: 'rounded-lg',
+      title: 'text-xl font-semibold',
+      confirmButton: 'px-6 py-2.5 rounded-lg font-medium',
+      cancelButton: 'px-6 py-2.5 rounded-lg font-medium'
+    }
+  }).then((result) => {
+    if (result.dismiss === Swal.DismissReason.cancel) {
+      // Open email client
+      window.location.href = "mailto:support@example.com?subject=Document Upload Issue";
+    }
+  });
+};
 
   const clearUploadedFile = () => {
     setUploadedFile(null);

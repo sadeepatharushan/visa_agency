@@ -13,7 +13,7 @@ const Hero = () => {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
 
-  // Normalize heroImages to ensure leading slash
+  // ✅ Fixed: Removed unnecessary dependency from useMemo
   const heroImages = useMemo(() => {
     if (!rawHeroImages) return [];
     return rawHeroImages
@@ -22,7 +22,7 @@ const Hero = () => {
         return url.startsWith('/') ? url : `/${url}`;
       })
       .filter(Boolean);
-  }, [rawHeroImages]);
+  }, []); // <-- only runs once since rawHeroImages is static
 
   useEffect(() => {
     console.log('Hero: images', heroImages);
@@ -86,7 +86,7 @@ const Hero = () => {
             src={currentSrc}
             alt={`Hero ${currentImage}`}
             fill
-            unoptimized={true} // bypass Next.js optimizer
+            unoptimized={true}
             priority
             style={{ objectFit: 'cover', opacity: loaded ? 1 : 0, transition: 'opacity 600ms ease' }}
             onLoad={() => {
@@ -187,5 +187,3 @@ const Hero = () => {
 };
 
 export default Hero;
-
-

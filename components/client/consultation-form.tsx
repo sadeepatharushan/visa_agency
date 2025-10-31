@@ -8,7 +8,7 @@ import { useForm } from "@conform-to/react"
 import { parseWithZod } from "@conform-to/zod"
 import Image from "next/image"
 import { useActionState } from "react"
-import { Calendar, Mail, Phone, User, GraduationCap, CheckCircle } from "lucide-react"
+import { Calendar, Mail, Phone, User, GraduationCap } from "lucide-react"
 
 export default function ConsultationForm() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
