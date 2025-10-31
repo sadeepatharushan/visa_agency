@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { FileText, CheckCircle, X } from 'lucide-react';
 import { UploadButton } from '@/lib/uploadthing';
+import Swal from 'sweetalert2';
 
 export default function DocumentUploader() {
   const [uploadedFile, setUploadedFile] = useState(null);
@@ -19,13 +20,77 @@ export default function DocumentUploader() {
     if (res && res[0]) {
       setUploadedFile(res[0]);
       console.log("Upload complete:", res[0]);
+      
+      // Professional Success Alert
+      Swal.fire({
+        icon: 'success',
+        title: 'Document Uploaded Successfully',
+        html: `
+          <p style="color: #4B5563; font-size: 15px; line-height: 1.6; margin-top: 10px;">
+            Your document has been securely uploaded to our system. 
+            One of our team members will review your submission and contact you shortly.
+          </p>
+          <p style="color: #6B7280; font-size: 13px; margin-top: 15px;">
+            Thank you for your patience.
+          </p>
+        `,
+        confirmButtonText: 'Got it',
+        confirmButtonColor: '#2563EB',
+        customClass: {
+          popup: 'rounded-lg',
+          title: 'text-xl font-semibold',
+          confirmButton: 'px-6 py-2.5 rounded-lg font-medium'
+        }
+      });
     }
   };
 
   const handleUploadError = (error) => {
     // Handle any upload errors
     console.error("Error uploading document:", error);
-    alert("Error uploading file: " + error.message);
+    
+    // Professional Error Alert
+    Swal.fire({
+      icon: 'error',
+      title: 'Upload Failed',
+      html: `
+        <p style="color: #4B5563; font-size: 15px; line-height: 1.6; margin-top: 10px;">
+          We encountered an issue while uploading your document. Please try again.
+        </p>
+        <div style="background-color: #FEF2F2; border-left: 3px solid #EF4444; padding: 12px; margin-top: 15px; border-radius: 4px;">
+          <p style="color: #991B1B; font-size: 13px; margin: 0;">
+            <strong>Error:</strong> ${error.message}
+          </p>
+        </div>
+        <p style="color: #6B7280; font-size: 14px; margin-top: 15px; line-height: 1.5;">
+          If the problem persists, please contact our support team:
+        </p>
+        <div style="margin-top: 10px;">
+          <p style="color: #2563EB; font-size: 14px; margin: 5px 0;">
+            📧 Email: support@example.com
+          </p>
+          <p style="color: #2563EB; font-size: 14px; margin: 5px 0;">
+            📞 Phone: +1 (800) 123-4567
+          </p>
+        </div>
+      `,
+      confirmButtonText: 'Try Again',
+      confirmButtonColor: '#2563EB',
+      showCancelButton: true,
+      cancelButtonText: 'Contact Support',
+      cancelButtonColor: '#6B7280',
+      customClass: {
+        popup: 'rounded-lg',
+        title: 'text-xl font-semibold',
+        confirmButton: 'px-6 py-2.5 rounded-lg font-medium',
+        cancelButton: 'px-6 py-2.5 rounded-lg font-medium'
+      }
+    }).then((result) => {
+      if (result.dismiss === Swal.DismissReason.cancel) {
+        // Open email client
+        window.location.href = 'mailto:support@example.com?subject=Document Upload Issue';
+      }
+    });
   };
 
   const clearUploadedFile = () => {
@@ -59,7 +124,7 @@ export default function DocumentUploader() {
                   <p className="text-xs text-gray-500">{formatFileSize(uploadedFile.size)}</p>
                 </div>
               </div>
-              
+                            
               <div className="flex items-center space-x-2">
                 {/* <a
                   href={uploadedFile.url}
@@ -69,8 +134,8 @@ export default function DocumentUploader() {
                 >
                   View
                 </a> */}
-                
-                <button 
+                                
+                <button
                   onClick={clearUploadedFile}
                   className="p-1 rounded-full hover:bg-gray-200 ml-3"
                   title="Remove file"
@@ -79,14 +144,14 @@ export default function DocumentUploader() {
                 </button>
               </div>
             </div>
-            
+                        
             <div className="mt-2 flex items-center">
               <CheckCircle className="h-4 w-4 text-green-500 mr-1" />
               <span className="text-xs text-green-600">Upload complete</span>
             </div>
           </div>
         )}
-        
+                
         {uploadedFile && (
           <div className="flex justify-center">
             <UploadButton

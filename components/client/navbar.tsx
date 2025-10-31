@@ -52,22 +52,22 @@ const Navbar = () => {
               </Link>
             </div>
 
-            {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center">
-              <ul className="flex items-center space-x-1">
-                {navlinks.map((item) => (
-                  <li key={item}>
-                    <a
-                      href={item === 'Blog' ? '/blogs' : `#${item.toLowerCase()}`}
-                      className="px-4 py-2 font-medium text-sm text-zinc-700 hover:text-blue-600 transition-colors duration-200 relative group"
-                    >
-                      {item}
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </nav>
+             {/* Navigation Links */}
+          <nav className="hidden lg:flex items-center justify-center flex-1">
+            <ul className="flex space-x-8">
+              {navlinks.map((item) => (
+                <li key={item}>
+                  <a
+                    href={item === 'Blog' ? '/blogs' : `#${item}`}
+                    className="font-semibold text-base tracking-wide text-zinc-900 transition-all duration-300 relative group"
+                  >
+                    {item}
+                    <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-blue-600"></span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
             {/* Desktop Actions */}
             <div className="hidden lg:flex items-center gap-3">
