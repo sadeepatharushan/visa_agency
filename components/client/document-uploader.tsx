@@ -4,7 +4,7 @@
 import { useState } from 'react';
 import { FileText, CheckCircle, X } from 'lucide-react';
 import { UploadButton } from '@/lib/uploadthing';
-import Swal from 'sweetalert2';
+import { toast } from 'sonner';
 
 export default function DocumentUploader() {
   const [uploadedFile, setUploadedFile] = useState(null);
@@ -22,27 +22,18 @@ export default function DocumentUploader() {
       setUploadedFile(res[0]);
       console.log("Upload complete:", res[0]);
       
-      // Professional Success Alert
-      Swal.fire({
-        icon: 'success',
-        title: 'Document Uploaded Successfully',
-        html: `
-          <p style="color: #4B5563; font-size: 15px; line-height: 1.6; margin-top: 10px;">
-            Your document has been securely uploaded to our system. 
-            One of our team members will review your submission and contact you shortly.
+      // Show a lightweight toast on success (using sonner)
+      toast.success(
+        <div>
+          <p style={{ color: '#4B5563', fontSize: 15, lineHeight: 1.6, marginTop: 10 }}>
+            Your document has been securely uploaded to our system. One of our team members will review your submission and contact you shortly.
           </p>
-          <p style="color: #6B7280; font-size: 13px; margin-top: 15px;">
+          <p style={{ color: '#6B7280', fontSize: 13, marginTop: 15 }}>
             Thank you for your patience.
           </p>
-        `,
-        confirmButtonText: 'Got it',
-        confirmButtonColor: '#2563EB',
-        customClass: {
-          popup: 'rounded-lg',
-          title: 'text-xl font-semibold',
-          confirmButton: 'px-6 py-2.5 rounded-lg font-medium'
-        }
-      });
+        </div>,
+        { duration: 6000 }
+      );
     }
   };
 
@@ -50,48 +41,40 @@ export default function DocumentUploader() {
   // Handle any upload errors
   console.error("Error uploading document:", error);
 
-  // Professional Error Alert
-  Swal.fire({
-    icon: 'error',
-    title: 'Upload Failed',
-    html: `
-      <p style="color: #4B5563; font-size: 15px; line-height: 1.6; margin-top: 10px;">
+  // Show a toast error with details and a quick action to try again or contact support
+  toast.error(
+    <div>
+      <p style={{ color: '#4B5563', fontSize: 15, lineHeight: 1.6, marginTop: 10 }}>
         We encountered an issue while uploading your document. Please try again.
       </p>
-      <div style="background-color: #FEF2F2; border-left: 3px solid #EF4444; padding: 12px; margin-top: 15px; border-radius: 4px;">
-        <p style="color: #991B1B; font-size: 13px; margin: 0;">
-          <strong>Error:</strong> ${error.message}
+      <div style={{ backgroundColor: '#FEF2F2', borderLeft: '3px solid #EF4444', padding: 12, marginTop: 15, borderRadius: 4 }}>
+        <p style={{ color: '#991B1B', fontSize: 13, margin: 0 }}>
+          <strong>Error:</strong> {error?.message}
         </p>
       </div>
-      <p style="color: #6B7280; font-size: 14px; margin-top: 15px; line-height: 1.5;">
+      <p style={{ color: '#6B7280', fontSize: 14, marginTop: 15, lineHeight: 1.5 }}>
         If the problem persists, please contact our support team:
       </p>
-      <div style="margin-top: 10px;">
-        <p style="color: #2563EB; font-size: 14px; margin: 5px 0;">
+      <div style={{ marginTop: 10 }}>
+        <a href="mailto:support@example.com?subject=Document Upload Issue" style={{ color: '#2563EB', fontSize: 14, display: 'block', margin: '5px 0' }}>
           📧 Email: support@example.com
-        </p>
-        <p style="color: #2563EB; font-size: 14px; margin: 5px 0;">
+        </a>
+        <p style={{ color: '#2563EB', fontSize: 14, margin: '5px 0' }}>
           📞 Phone: +1 (800) 123-4567
         </p>
       </div>
-    `,
-    confirmButtonText: 'Try Again',
-    confirmButtonColor: '#2563EB',
-    showCancelButton: true,
-    cancelButtonText: 'Contact Support',
-    cancelButtonColor: '#6B7280',
-    customClass: {
-      popup: 'rounded-lg',
-      title: 'text-xl font-semibold',
-      confirmButton: 'px-6 py-2.5 rounded-lg font-medium',
-      cancelButton: 'px-6 py-2.5 rounded-lg font-medium'
+    </div>,
+    {
+      action: {
+        label: 'Try Again',
+        onClick: () => {
+          // clear the file so the user can upload again
+          clearUploadedFile();
+        }
+      },
+      duration: 8000
     }
-  }).then((result) => {
-    if (result.dismiss === Swal.DismissReason.cancel) {
-      // Open email client
-      window.location.href = "mailto:support@example.com?subject=Document Upload Issue";
-    }
-  });
+  );
 };
 
   const clearUploadedFile = () => {

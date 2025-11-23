@@ -128,7 +128,7 @@ export default function UniversityList() {
               <div className="grid md:grid-cols-3 gap-x-12 gap-y-6">
                 {columnsData.map((column, columnIndex) => (
                   <div key={columnIndex} className="space-y-6">
-                    {column.map((university, index) => (
+                    {column.map((university) => (
                       <Link
                         key={university.slug}
                         href={`/universities/${university.slug}`}

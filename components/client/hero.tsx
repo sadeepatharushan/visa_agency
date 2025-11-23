@@ -14,14 +14,15 @@ const Hero = () => {
   const [error, setError] = useState(false);
 
   // ✅ Fixed: Removed unnecessary dependency from useMemo
-  const heroImages = useMemo(() => {
+  const heroImages = useMemo<string[]>(() => {
     if (!rawHeroImages) return [];
     return rawHeroImages
       .map((item) => {
-        const url = typeof item === 'string' ? item : item?.url ?? '';
+        const typed = item as string | { url?: string };
+        const url = typeof typed === 'string' ? typed : typed?.url ?? '';
         return url.startsWith('/') ? url : `/${url}`;
       })
-      .filter(Boolean);
+      .filter(Boolean) as string[];
   }, []); // <-- only runs once since rawHeroImages is static
 
   useEffect(() => {

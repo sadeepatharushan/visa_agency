@@ -88,7 +88,7 @@ const documentHandler = () => {
                     <CheckCircle className="w-8 h-8 text-white" />
                   </div>
                   <h4 className="text-lg font-bold text-gray-800 mb-2">Get Response</h4>
-                  <p className="text-sm text-gray-600 max-w-32">We'll contact you soon</p>
+                  <p className="text-sm text-gray-600 max-w-32">We&apos;ll contact you soon</p>
                   <div className="w-8 h-1 bg-green-600 rounded-full mt-3"></div>
                 </div>
               </div>
